@@ -14,7 +14,7 @@
     </header>
     <section id="soundcloud">
         <h2>Listen on SoundCloud</h2>
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/your_user_id&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false"></iframe>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/rqhq4real&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false"></iframe>
     </section>
     <section id="stats">
         <h2>Stats</h2>
@@ -26,10 +26,6 @@
             <h3>Plays</h3>
             <span class="count" data-count="5000">0</span>
         </div>
-    </section>
-    <section id="instagram">
-        <h2>Instagram Feed</h2>
-        <div id="instagram-feed">Loading...</div>
     </section>
     <script>
         $('.count').each(function () {
@@ -44,40 +40,6 @@
                 }
             });
         });
-
-        // Real-time Instagram feed integration
-        function fetchInstagramFeed() {
-            // Dummy API URL for Instagram feed integration
-            $.getJSON('https://api.instagram.com/v1/users/self/media/recent?access_token=YOUR_ACCESS_TOKEN', function(data) {
-                var output = '';
-                $.each(data.data, function(index, post) {
-                    output += '<img src="' + post.images.thumbnail.url + '" alt="Instagram post">';
-                });
-                $('#instagram-feed').html(output);
-            });
-        }
-
-        fetchInstagramFeed();
     </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            transition: all 0.5s ease;
-        }
-        header {
-            text-align: center;
-            padding: 2em 0;
-            background-color: #f0f0f0;
-        }
-        section {
-            margin: 20px;
-        }
-        .stat {
-            margin: 10px;
-        }
-        img {
-            max-width: 100%;
-        }
-    </style>
 </body>
 </html>
