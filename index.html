@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Press Kit</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .fade-in { opacity: 0; transition: opacity 1s; }
+        .fade-in-active { opacity: 1; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the DJ Press Kit</h1>
+
+    <h2>SoundCloud Player</h2>
+    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"  src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fyourtrack&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false"></iframe>
+
+    <h2>Animated Number Counting</h2>
+    <div id="counter">0</div>
+    <script>
+        let count = 0;
+        const target = 100;
+        const counter = document.getElementById('counter');
+        const interval = setInterval(() => {
+            count++;
+            counter.innerText = count;
+            if (count === target) clearInterval(interval);
+        }, 50);
+    </script>
+
+    <h2>Instagram Feed</h2>
+    <div id="instagram-feed"></div>
+    <script>
+        const fetchInstagramFeed = async () => {
+            const response = await fetch('https://api.instagram.com/v1/users/self/media/recent?access_token=YOUR_ACCESS_TOKEN');
+            const data = await response.json();
+            const feed = document.getElementById('instagram-feed');
+            data.data.forEach(post => {
+                const img = document.createElement('img');
+                img.src = post.images.thumbnail.url;
+                feed.appendChild(img);
+            });
+        };
+        fetchInstagramFeed();
+    </script>
+
+    <h2>Fade-In Scroll Animations</h2>
+    <div class="fade-in" id="animation-section">Look at me fade in!</div>
+    <script>
+        const fadeInSection = document.getElementById('animation-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    fadeInSection.classList.add('fade-in-active');
+                }
+            });
+        });
+        observer.observe(fadeInSection);
+    </script>
+
+    <h2>Real-Time API Integration</h2>
+    <div id="api-data"></div>
+    <script>
+        const fetchData = async () => {
+            const response = await fetch('https://api.publicapis.org/entries');
+            const data = await response.json();
+            const apiData = document.getElementById('api-data');
+            data.entries.forEach(entry => {
+                const p = document.createElement('p');
+                p.innerText = entry.API;
+                apiData.appendChild(p);
+            });
+        };
+        fetchData();
+    </script>
+</body>
+</html>
