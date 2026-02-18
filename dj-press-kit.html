@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Press Kit</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .fade-in.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DJ Press Kit</h1>
+    </header>
+
+    <section id="soundcloud">
+        <h2>SoundCloud Player</h2>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/YOUR_USER_ID&color=%23ff5500&auto_play=false&show_user=true"></iframe>
+    </section>
+
+    <section id="animated-count">
+        <h2>Statistics</h2>
+        <div class="number-count" data-target="5000">0</div>
+    </section>
+
+    <section id="instagram-feed">
+        <h2>Instagram Feed</h2>
+        <div id="instagram-content"></div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            // Number counting animation
+            $('.number-count').each(function() {
+                var $this = $(this);
+                var countTo = $this.data('target');
+                $({ countNum: $this.text() }).animate({ countNum: countTo }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function() {
+                        $this.text(Math.floor(this.countNum));
+                    },
+                    complete: function() {
+                        $this.text(this.countNum);
+                    }
+                });
+            });
+
+            // Instagram feed integration
+            $.get("https://api.instagram.com/v1/users/self/media/recent?access_token=YOUR_ACCESS_TOKEN", function(data) {
+                $.each(data.data, function(i, item) {
+                    $('#instagram-content').append('<img src="' + item.images.thumbnail.url + '" />');
+                });
+            });
+
+            // Fade-in animations
+            AOS.init();
+            $(window).scroll(function() {
+                $('.fade-in').each(function() {
+                    if ($(this).offset().top < $(window).scrollTop() + $(window).height()) {
+                        $(this).addClass('visible');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
