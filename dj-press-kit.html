@@ -2,56 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DJ Press Kit</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
+    <meta http-equiv="refresh" content="0; url=index.html">
+    <title>Redirecting...</title>
 </head>
 <body>
-    <header>
-        <h1>DJ Press Kit</h1>
-    </header>
-    <section id="soundcloud">
-        <h2>Listen on SoundCloud</h2>
-        <iframe width="100%" height="166" scrolling="no" frameborder="no"
-                allow="autoplay" 
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/your_user_id&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-    </section>
-    <section id="stats">
-        <h2>Statistics</h2>
-        <div class="counter" data-count="1000">0</div>
-        <div class="counter" data-count="500">0</div>
-    </section>
-    <section id="instagram-feed">
-        <h2>Instagram Feed</h2>
-        <div id="insta-feed"></div>
-    </section>
-    <script>
-        // Animated stat counters
-        $('.counter').each(function() {
-            $(this).animate({
-                Counter: $(this).data('count')
-            }, {
-                duration: 4000,
-                easing: 'swing',
-                step: function(now) {
-                    $(this).text(Math.ceil(now));
-                }
-            });
-        });
-
-        // Scroll fade-in animations
-        ScrollReveal().reveal('#soundcloud', { delay: 200 });
-        ScrollReveal().reveal('#stats', { delay: 400 });
-        ScrollReveal().reveal('#instagram-feed', { delay: 600 });
-
-        // Fetch Instagram feed (Replace 'your_access_token' with your actual token)
-        $.getJSON('https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url&access_token=your_access_token', function(data) {
-            $.each(data.data, function(i, post) {
-                $('#insta-feed').append('<img src="' + post.media_url + '" alt="Instagram Post">');
-            });
-        });
-    </script>
+    <p>This page has moved. <a href="index.html">Click here</a> if you are not redirected.</p>
 </body>
 </html>

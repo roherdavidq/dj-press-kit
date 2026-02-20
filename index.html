@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
 </head>
 <body>
 <canvas id="matrix-canvas"></canvas>
@@ -687,6 +688,15 @@ $(function() {
     });
   });
 });
+
+// ScrollReveal scroll-based animations (from dj-press-kit.html)
+ScrollReveal().reveal('.cover', { delay: 100, distance: '30px', origin: 'bottom', duration: 800, easing: 'ease-out' });
+ScrollReveal().reveal('section', { delay: 200, distance: '40px', origin: 'bottom', duration: 800, interval: 100 });
+ScrollReveal().reveal('.stats-row', { delay: 300, distance: '30px', origin: 'bottom', duration: 800 });
+ScrollReveal().reveal('.track-item', { delay: 150, distance: '20px', origin: 'left', duration: 600, interval: 100 });
+ScrollReveal().reveal('.gig-item', { delay: 150, distance: '20px', origin: 'right', duration: 600, interval: 100 });
+ScrollReveal().reveal('.quote-cell', { delay: 200, distance: '30px', origin: 'bottom', duration: 700, interval: 150 });
+ScrollReveal().reveal('.photo-slot', { delay: 200, distance: '20px', origin: 'bottom', duration: 600, interval: 100 });
 </script>
 
 </body>
